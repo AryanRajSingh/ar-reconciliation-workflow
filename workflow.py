@@ -36,16 +36,12 @@ async def execute_stage(stage, row):
 
     await asyncio.sleep(2)
 
-    # simulate random failure (30%)
     if random.random() < 0.3:
 
         raise Exception(
             f"{stage} failed"
         )
 
-    # -------------------------
-    # Ingestion
-    # -------------------------
     if stage == "ingestion":
 
         print(
@@ -53,9 +49,6 @@ async def execute_stage(stage, row):
         )
 
 
-    # -------------------------
-    # Matching
-    # -------------------------
     elif stage == "matching":
 
         invoice = (
@@ -116,10 +109,6 @@ async def execute_stage(stage, row):
             f"Calculated Balance: {row['calculated_balance']}"
         )
 
-
-    # -------------------------
-    # Validation
-    # -------------------------
     elif stage == "validation":
 
         difference = abs(
@@ -141,9 +130,6 @@ async def execute_stage(stage, row):
         )
 
 
-    # -------------------------
-    # Decision Routing
-    # -------------------------
     elif stage == "decision":
 
         if row["difference"] > 5:

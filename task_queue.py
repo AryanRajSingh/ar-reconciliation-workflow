@@ -29,8 +29,6 @@ async def worker():
 
 async def start_workers():
 
-    # start 3 parallel workers
-
     workers=[]
 
     for _ in range(3):
